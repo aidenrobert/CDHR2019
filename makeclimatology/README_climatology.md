@@ -1,7 +1,7 @@
-# CDHR2019: Climate, natural disasters, and human responses
+# Retrieving source data from the ECMWF API
 
-*Climate, natural disasters, and human responses* is an interdisciplinary study carried out as a collaboration between the Department of Meteorology (MISU) and the Department of Economic History and International Relations (EkoHist) at Stockholm University. The project seeks to investigate human responses to natural disasters in the modern climate (2006-2017) using a broad range of social, economic, and physical variables. The key participants in the project are Lisa Dellmuth and Christian Hultgren (EkoHist), and Frida Bender and Aiden Jönsson (MISU).
+Here, scripts for retrieving the ERA-Interim data on which the meteorological variables used in the *Climate, natural disasters, and human responses* project are available. The Python scripts require the `ecmwfapi` Python package to access the ECMWF servers. Description of ERA-Interim data can be found on the [ECMWF website](https://www.ecmwf.int/en/forecasts/datasets/reanalysis-datasets/era-interim), and instructions for using the `ecmwfapi` Python package can be found [on pypi.org.](https://pypi.org/project/ecmwf-api-client/)
 
-This repository is used to store code used for the project (primarily initiated by Aiden Jönsson to collect scripts used to calculate meteorological variables for the project) and to make the methods used for the research open to the community for use and for the reproducibility of the results.
+The shell scripts in each directory are ready to be run as a bash file, and will retrieve all years of data; it is recommended to stay within that directory to run the script. After all years are present, Climate Data Operators (CDO) can be used to merge the entire timespan into a single file, and the yearly files can then be deleted:
 
-The scripts used to calculate the statistical variables from the raw reanalysis data are included here; the resulting reanalysis data used for this project will be available at the [Bolin Center for Climate Research's open database](https://bolin.su.se/data/). Geometric files of geographical boundaries needed for this project are available at [the GADM website.](https://gadm.org/download_world.html)
+`cdo -b F64 mergetime *.nc VAR_1981-2017_record.nc && mv VAR_1981-2017_record.nc .. && rm -rf *.nc`
