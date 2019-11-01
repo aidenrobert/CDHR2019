@@ -11,9 +11,9 @@ Rscript MakeYearlyRecord_tmin_pctl07.r
 Rscript MakeYearlyRecord_tmin_pctl16.r
 
 ## Make yearly magnitude records for the maximum temperature extremes
-Rscript MakeYearlyRecord_tmin_pctl84.r
-Rscript MakeYearlyRecord_tmin_pctl93.r
-Rscript MakeYearlyRecord_tmin_pctl98.r
+Rscript MakeYearlyRecord_tmax_pctl84.r
+Rscript MakeYearlyRecord_tmax_pctl93.r
+Rscript MakeYearlyRecord_tmax_pctl98.r
 
 ## Move finished data to the storage directory
 mv CDHR2019* SOME_STORAGE_DIR
