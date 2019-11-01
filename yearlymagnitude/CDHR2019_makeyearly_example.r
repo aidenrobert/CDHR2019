@@ -36,7 +36,7 @@ end <- as.Date("2006-12-31")
 
 ## Make column names to save to and initialize in the data frame with zeros
 years <- as.character(2006:2017)
-global_wind[,years] <- 0
+NAMEOFDATAFRAME[,years] <- 0
 
 ## Counter for the column name
 t = 1
@@ -58,7 +58,7 @@ while (end < "2018-01-01") {
   for (state in 1:256) {
     
     ## Get shape of current country
-    place <- as(global_wind$geometry[state],"Spatial")
+    place <- as(NAMEOFDATAFRAME$geometry[state],"Spatial")
     
     ## Set coordinate format to same as in meteorological data
     place <- spTransform(place,crs(now_metdata))
@@ -68,7 +68,7 @@ while (end < "2018-01-01") {
     #extr <- colMax(extr) # use if you would like to calculate a maximum
     
     ## Save the amount of events that exceed the threshold for the year
-    global_wind[state,years[t]] <- sum(extr>threshold)/nrow(extr)
+    NAMEOFDATAFRAME[state,years[t]] <- sum(extr>threshold)/nrow(extr)
     
   }
   
