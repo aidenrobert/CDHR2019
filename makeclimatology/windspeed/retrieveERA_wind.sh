@@ -31,3 +31,13 @@ do
 done
 
 ## After this, use cdo mergetime to finish the operation, then remove the yearly files
+cdo -b F32 mergetime *_wind.nc windspeed_total.nc
+rm -rf *_wind.nc
+
+## Make mean climatologies and subtract from the values to get anomalies
+cdo ydaysub windspeed_total.nc -ydaymean windspeed_total.nc windspeed_anom.nc
+cdo ydaypctl windspeed_total.nc -ydaymin windspeed_total.nc -ydaymax windspeed_total.nc windspeed_median.nc
+cdo ydaysub windspeed_total.nc windspeed_median.nc windspeed_median_anom.nc
+rm -rf windspeed_median.nc
+cdo seltimestep,9132/13514  windspeed_anom.nc windspeed_modern_anom.nc
+cdo seltimestep,9132/13514  windspeed_median_anom.nc windspeed_modern_median_anom.nc

@@ -36,3 +36,15 @@ do
 done
 
 ## After this, use cdo mergetime to finish the operation, then remove the yearly files
+cdo -b F32 mergetime *_t2m.nc t2m_total.nc
+cdo -b F32 mergetime *_tmax.nc tmax_total.nc
+cdo -b F32 mergetime *_tmin.nc tmin_total.nc
+rm -rf *_tmin.nc *_tmax.nc *_t2m.nc
+
+## Make mean climatologies and subtract from the values to get anomalies
+cdo ydaysub t2m_total.nc -ydaymean t2m_total.nc t2m_anom.nc
+cdo ydaysub tmax_total.nc -ydaymean t2m_total.nc tmax_anom.nc
+cdo ydaysub tmin_total.nc -ydaymean t2m_total.nc tmin_anom.nc
+cdo seltimestep,9132/13514  tmax_anom.nc tmax_modern_anom.nc
+cdo seltimestep,9132/13514  tmin_anom.nc tmin_modern_anom.nc
+cdo seltimestep,9132/13514  t2m_anom.nc t2m_modern_anom.nc

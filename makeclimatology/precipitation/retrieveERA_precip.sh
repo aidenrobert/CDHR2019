@@ -31,3 +31,8 @@ do
 done
 
 ## After this, use cdo mergetime to finish the operation, then remove the yearly files
+cdo -b F32 mergetime *_precip.nc dailyprecip_total.nc
+rm -rf *_precip.nc
+
+## Make annual accumulated precipitation for the modern period
+cdo seltimestep,24/36 -yearsum dailyprecip_total.nc annual_accumulated_precip.nc
