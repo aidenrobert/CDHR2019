@@ -1,7 +1,7 @@
 #!/bin/bash
 export LD_LIBRARY_PATH=/home/x_aidjo/.conda/envs/python3env/lib:$LD_LIBRARY_PATH
 
-### Script for counting number of meteorological events over threshold
+### This script will execute the R files to make yearly measures of extreme events
 ### Written for Climate, Disasters, and Human Responses project
 ### Aiden Jönsson, 30 September 2019
 
