@@ -62,7 +62,7 @@ while (end < "2018-01-01") {
     #extr <- colMax(extr)
     
     ## Save the amount of events that exceed the threshold for the year
-    global_temp[state,years[t]] <- sum(extr<93.32)/nrow(extr)
+    global_temp[state,years[t]] <- sum(extr>93.32)/nrow(extr)
     print(global_temp[state,years[t]])
   }
   
